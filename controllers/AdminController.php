@@ -5,7 +5,7 @@ class AdminController
     private function checkAdmin(): void
     {
         if (!isset($_SESSION['admin'])) {
-            header('Location: index.php?controller=Admin&action=loginAdmin');
+            echo '<script>window.location.replace("index.php?c=Admin&a=loginAdmin")</script>';
         }
     }
     public function loginAdmin()
@@ -15,7 +15,7 @@ class AdminController
     public function loginAuth()
     {
         if (!isset($_POST['admin']) || !isset($_POST['password'])) {
-            header('Location: index.php?log=true&controller=Admin&action=loginAdmin?');
+            echo '<script>window.location.replace("index.php?c=Admin&a=loginAdmin")</script>';
         }
         $admin = new Admin();
         $admin->setAdmin($_POST['admin']);
@@ -23,9 +23,9 @@ class AdminController
         $login = $admin->loginAuth();
         if ($login) {
             $_SESSION['admin'] = $login;
-            header('Location: index.php?controller=Admin&action=menuAdmin');
+            echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
         } else {
-            header('Location: index.php?log=false&controller=Admin&action=loginAdmin');
+            echo '<script>window.location.replace("index.php?log=false&c=Admin&a=loginAdmin&t=Iniciar%20sesion%20-%20Admin")</script>';
         }
     }
     public function menuAdmin()
@@ -72,17 +72,21 @@ class AdminController
     }
     public function postSearchProduct()
     {
-        $this->checkAdmin();
         require_once 'productController.php';
         $productController = new ProductController();
         $productController->postFormSearchProduct();
     }
     public function postSearchCategory()
     {
-        $this->checkAdmin();
         require_once 'categoryController.php';
         $productController = new categoryController();
         $productController->postFormSearchCategory();
+    }
+    public function postSearchOrder()
+    {
+        require_once 'orderController.php';
+        $oController = new orderController();
+        $oController->postFormSearchOrder();
     }
     public function postEditProduct()
     {
@@ -106,7 +110,7 @@ class AdminController
     public function closeAdmin()
     {
         unset($_SESSION['admin']);
-        header('Location: index.php?controller=Admin&action=loginAdmin');
+        echo '<script>window.location.replace("index.php?c=Admin&a=loginAdmin&t=Iniciar%20sesion%20-%20Admin")</script>';
     }
     public function viewTableCategory()
     {

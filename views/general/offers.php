@@ -1,24 +1,21 @@
 <?php
 require_once "controllers/categoryController.php";
 $cat = new CategoryController;
-$categories = $cat->getAllCategories();
-echo '<div class="espace"></div>';
-echo '<h1 class="catName">Mejores ofertas</h1>';
-foreach ($categories as $ca):
-    if ($ca->estado == 1):
-        ?>
-        <section class="container" id="<?php echo $ca->id_categoria;?>">
+$categories = $cat->getAllCategories(); ?>
+<div class="espace"></div>
+<h1 class="catName">Mejores ofertas</h1>
+<?php foreach ($categories as $ca) :
+    if ($ca->estado == 1) : ?>
+        <section class="container" id="<?php echo $ca->id_categoria; ?>">
             <?php if (isset($productList)) {
-                foreach ($productList as $product):
-                    if ($product->estado == 1 && $product->id_categoria == $ca->id_categoria):
-                        ?>
+                foreach ($productList as $product) :
+                    if ($product->estado == 1 && $product->id_categoria == $ca->id_categoria) :
+            ?>
                         <section class="mainMenu">
-                            <iframe onload="desplegarImagen(<?php echo ($product->id) ?>)"
-                                    style="display: none">
+                            <iframe onload="desplegarImagen(<?php echo ($product->id) ?>)" style="display: none">
                             </iframe>
                             <article class="gallery">
-                                <div class="galleryImageContainer<?php echo ($product->id) ?> galleryImageContainer"
-                                     style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'>
+                                <div class="galleryImageContainer<?php echo ($product->id) ?> galleryImageContainer" style='background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'>
                                 </div>
                             </article>
                             <article class="details">
@@ -34,7 +31,7 @@ foreach ($categories as $ca):
                                 <div class="detailsPrices">
                                     <?php
                                     if ($product->precioAnterior != null) {
-                                        ?>
+                                    ?>
                                         <p class="detailsNewPrice">
                                             <?php echo ($product->precio); ?>€
                                             <span class="detailsDiscount">-
@@ -46,27 +43,22 @@ foreach ($categories as $ca):
                                                 <?php echo ($product->precioAnterior); ?>€
                                             </span>
                                         </p>
-                                        <?php
+                                    <?php
                                     } else {
-                                        ?>
+                                    ?>
                                         <p class="detailsNewPrice">
                                             <?php echo ($product->precio); ?>€
                                         </p>
-                                        <?php
+                                    <?php
                                     }
                                     ?>
                                 </div>
-                                <iframe onload="anadirCarrito(<?php echo ($product->id); ?>)"
-                                        style="display: none"></iframe>
+                                <iframe onload="anadirCarrito(<?php echo ($product->id); ?>)" style="display: none"></iframe>
                                 <div class="detailsQuantity">
                                     <div class="detailsInput">
-                                        <i class="fa-solid fa-minus detailsInputMinus"
-                                           id="detailsInputMinus<?php echo ($product->id); ?>"></i>
-                                        <input type="text"
-                                               value="0"
-                                               class="detailsInputNumber<?php echo ($product->id); ?> detailsInputNumber">
-                                        <i class="fa-solid fa-plus detailsInputPlus"
-                                           id="detailsInputPlus<?php echo ($product->id); ?>"></i>
+                                        <i class="fa-solid fa-minus detailsInputMinus" id="detailsInputMinus<?php echo ($product->id); ?>"></i>
+                                        <input type="text" value="0" class="detailsInputNumber<?php echo ($product->id); ?> detailsInputNumber">
+                                        <i class="fa-solid fa-plus detailsInputPlus" id="detailsInputPlus<?php echo ($product->id); ?>"></i>
                                     </div>
                                     <?php
                                     if (isset($_SESSION['client'])) {
@@ -76,7 +68,7 @@ foreach ($categories as $ca):
                                             echo '<button class="detailsButtonDisabled">No hay unidades</button>';
                                         }
                                     } else {
-                                        echo '<button class="detailsButtonDisabled"><a class="cartLink" href="index.php?log=true&controller=client&action=loginClient">Inicia sesión</a> para comprar</button>';
+                                        echo '<button class="detailsButtonDisabled"><a class="cartLink" href="index.php?log=true&c=client&a=loginClient">Inicia sesión</a> para comprar</button>';
                                     }
                                     ?>
                                 </div>
@@ -90,8 +82,7 @@ foreach ($categories as $ca):
                         </div>
                         <div class="modalMoreInfo<?php echo ($product->id); ?> modalMoreInfo">
                             <div class="xmark<?php echo ($product->id); ?> xmark">
-                                <i class="fa-solid fa-circle-xmark"
-                                   id="closeMoreInfo"></i>
+                                <i class="fa-solid fa-circle-xmark" id="closeMoreInfo"></i>
                             </div>
                             <div class="menuMoreInfo">
                                 <h2 class="detailsAuthor">
@@ -101,8 +92,7 @@ foreach ($categories as $ca):
                                     <?php echo ($product->nombre); ?>
                                 </h2>
                                 <article class="gallery">
-                                    <div class="galleryImageContainerMoreInfo"
-                                         style=' background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'>
+                                    <div class="galleryImageContainerMoreInfo" style=' background-image:url(data:image/jpg;base64,<?php echo base64_encode($product->foto); ?>);'>
                                     </div>
                                 </article>
                                 <article class="details">
@@ -129,10 +119,12 @@ foreach ($categories as $ca):
                                 </article>
                             </div>
                         </div>
-                    <?php endif; ?>
-                <?php endforeach;
+            <?php endif;
+                endforeach;
             } ?>
         </section>
-        <?php endif; ?>
-        <?php endforeach; ?>
-        <div class="arrowUp"><button onclick="catScroll(0)" class="arrowButton"><i class="fa-solid fa-arrow-up"></i> <p>Volver arriba</p></button></div>
+<?php endif;
+endforeach; ?>
+<div class="arrowUp"><button onclick="catScroll(0)" class="arrowButton"><i class="fa-solid fa-arrow-up"></i>
+        <p>Volver arriba</p>
+    </button></div>

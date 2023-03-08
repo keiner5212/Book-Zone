@@ -12,7 +12,7 @@ class CategoryController
         $category = new Category();
         $category->setIdCategoria($_GET['id']);
         $category->deleteCategory();
-        header('Location: index.php?controller=Admin&action=viewTableCategory');
+        echo '<script>window.location.replace("index.php?c=Admin&a=viewTableCategory&t=Categorias")</script>';
     }
     public function addTableCategory()
     {
@@ -23,15 +23,12 @@ class CategoryController
         $category = new Category();
         $category->setNombre($_POST['nombre']);
         $category->addCategory();
-        header('Location: index.php?controller=Admin&action=viewTableCategory');
+        echo '<script>window.location.replace("index.php?c=Admin&a=viewTableCategory&t=Categorias")</script>';
     }
     public function editTableCategory()
     {
         if (!isset($_GET['id_categoria'])) {
             echo "<script>alert('No se ha pasado la ID correctamente');</script>";
-            print("<pre>");
-            var_dump($_GET);
-            print("</pre>");
         }
         $aux = new Category();
         $aux->setIdCategoria($_GET['id_categoria']);
@@ -48,20 +45,20 @@ class CategoryController
         } else {
             $aux->editConditionCategory($_GET["id_categoria"], 0);
         }
-        header('Location: index.php?controller=Admin&action=viewTableCategory');
+        echo '<script>window.location.replace("index.php?c=Admin&a=viewTableCategory&t=Categorias")</script>';
     }
     public function postFormEditCategory()
     {
         $condition = $this->isCondition();
         if ($condition) {
             echo "<script>alert('Faltan campos por rellenar');</script>";
-            header("Location: index.php?controller=Admin&action=editCategory&id_categoria=1");
+            echo '<script>window.location.replace("index.php?c=Admin&a=viewTableCategory&t=Categorias")</script>';
         }
         $category = new Category();
         $category->setIdCategoria($_POST['id_categoria']);
         $category->setNombre($_POST['nombre']);
         $category->editCategory();
-        header('Location: index.php?controller=Admin&action=viewTableCategory');
+        echo '<script>window.location.replace("index.php?c=Admin&a=viewTableCategory&t=Categorias")</script>';
     }
     public function isCondition(): bool
     {

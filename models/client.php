@@ -114,19 +114,15 @@ class Client
         } else {
             echo 'no';
         }
-
     }
 
     public function getFullName($email)
     {
         try {
-            $query1 = $this->pdo->prepare("SELECT nombre FROM clientes WHERE email = '{$email}';");
-            $query2 = $this->pdo->prepare("SELECT apellidos FROM clientes WHERE email = '{$email}';");
+            $query1 = $this->pdo->prepare("SELECT concat(nombre,' ',apellidos) as nc FROM clientes WHERE email = '{$email}';");
             $query1->execute();
-            $query2->execute();
             $nombre = $query1->fetch(PDO::FETCH_OBJ);
-            $apellidos = $query2->fetch(PDO::FETCH_OBJ);
-            return $nombre->nombre . " " . $apellidos->apellidos;
+            return $nombre->nc;
         } catch (Exception $e) {
             die($e->getMessage());
         }
@@ -145,7 +141,6 @@ class Client
 
     public function modifyUser($id)
     {
-        $sql = "UPDATE clientes (email, nombre, apellidos, calle, numero, dni";
         $sql = "UPDATE clientes SET email='{$this->getEmail()}', nombre='{$this->getUserName()}', apellidos='{$this->getUserLastName()}', calle='{$this->getUserDirection()}', numero='{$this->getUserNumber()}', dni='{$this->getUserDNI()}' WHERE id = '{$id}';";
         $this->pdo->query($sql);
     }

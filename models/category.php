@@ -9,11 +9,9 @@ class Category
     private $nombre;
     private $estado = 0;
 
-
     public function __construct()
     {
         $this->pdo = (new Database)->connect();
-
     }
 
     /**
@@ -94,7 +92,6 @@ class Category
         } catch (Exception $e) {
             die($e->getMessage());
         }
-
     }
     public function searchCategory()
     {
@@ -130,7 +127,6 @@ class Category
             die($e->getMessage());
         }
     }
-
 
     public function deleteCategory()
     {

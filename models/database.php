@@ -11,7 +11,6 @@ class Database
         $username = "root";
         $password = "";
 
-
         //crearemos una nueva conexión instanciando el objeto PDO
         $this->db = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         //establecemos el modo PDO error a exception para poder recuperar las excepeciones
@@ -23,6 +22,4 @@ class Database
     {
         return $this->db;
     }
-
-
 }

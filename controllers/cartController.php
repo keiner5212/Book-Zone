@@ -22,10 +22,8 @@ class CartController
             $product = $_GET["product"];
             $cart = new Cart($client, $product, 0);
             $cart->deleteCart();
-            echo '<script>window.location.replace("index.php")</script>';
-        } else {
-            echo '<script>window.location.replace("index.php")</script>';
-        }
+        } 
+        echo '<script>window.location.replace("index.php")</script>';
     }
     public function getCart()
     {

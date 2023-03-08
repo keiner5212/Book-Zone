@@ -1,20 +1,10 @@
-<a href="index.php?controller=Admin&action=closeAdmin">Cerrar Sesion</a>
 <section class="tabla">
-    <form class="d-flex"
-          action="index.php?controller=Admin&action=postSearchProduct"
-          method="post">
+    <form class="d-flex" action="index.php?c=Admin&a=postSearchProduct" method="post">
         <div class="b-left">
-            <a class="b_menu"
-               href="index.php?controller=Admin&action=viewTableCategory">Categorias</a>
-            <a class="b_menu"
-               href="index.php?controller=Admin&action=addProduct">Añadir libro</a>
-            <a class="b_menu"
-               href="index.php?controller=Admin&action=viewTableOrders">Lista de Pedidos</a>
+            <div><a class="b_menu" href="index.php?c=Admin&a=addProduct&t=Añadir%20libro">Añadir libro</a></div>
+            <div><input class="buscar-form" type="search" placeholder="Busca el nombre" name="busqueda"></div>
         </div>
-        <input class="buscar-form"
-               type="search"
-               placeholder="Busca el nombre"
-               name="busqueda">
+        
     </form>
     <table class="content-table">
         <thead>
@@ -33,8 +23,8 @@
         </thead>
         <tbody>
             <?php
-            if (!empty($productList)):
-                foreach ($productList as $v): ?>
+            if (!empty($productList)) :
+                foreach ($productList as $v) : ?>
                     <tr>
                         <td>
                             <?php echo ($v->id); ?>
@@ -48,8 +38,7 @@
                         <td>
                             <?php echo ("$" . $v->precio); ?>
                         </td>
-                        <td><img class="fotoProduct"
-                                 src="data:image/jpg;base64,<?php echo base64_encode($v->foto); ?>" />
+                        <td><img class="fotoProduct" src="data:image/jpg;base64,<?php echo base64_encode($v->foto); ?>" />
                         </td>
                         <td>
                             <?php echo ($v->stock); ?>
@@ -64,32 +53,28 @@
                             ?>
                         </td>
                         <td>
-                            <a title="Edit"
-                               href="index.php?controller=Admin&action=editProduct&id=<?php echo ($v->id); ?>">
-                                <img src="assets/img/img_icons/editar.svg"
-                                     alt="Editar">
+                            <a title="Edit" href="index.php?c=Admin&a=editProduct&id=<?php echo ($v->id);?>&t=Editar%20producto">
+                                <img src="assets/img/img_icons/editar.svg" alt="Editar" height='50px'>
                             </a>
                         </td>
                         <td>
                             <?php
-                            $urlEstado = "index.php?controller=Admin&action=conditionProduct&id=" . $v->id;
+                            $urlEstado = "index.php?c=Admin&a=conditionProduct&id=" . $v->id;
                             if ($v->estado == 1) {
-                                echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' alt='Activar'></a>";
+                                echo "<a title='Desactivar' href='$urlEstado'><img src='assets/img/img_icons/tick.svg' height='50px' alt='Activar'></a>";
                             } else {
-                                echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' alt='Desactivar'></a>";
+                                echo "<a title='Activar' href='$urlEstado'><img src='assets/img/img_icons/x.svg' height='50px' alt='Desactivar'></a>";
                             }
                             ?>
                         </td>
                         <td>
-                            <a title="Delete"
-                               href="index.php?controller=Admin&action=deleteProduct&id=<?php echo ($v->id); ?>">
-                                <img src="assets/img/img_icons/delete.svg"
-                                     alt="Eliminar">
+                            <a title="Delete" href="index.php?c=Admin&a=deleteProduct&id=<?php echo ($v->id); ?>">
+                                <img src="assets/img/img_icons/delete.svg" height='50px' alt="Eliminar">
                             </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            <?php else: ?>
+            <?php else : ?>
                 <td>No hay productos</td>
             <?php endif ?>
         </tbody>

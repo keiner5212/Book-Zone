@@ -27,11 +27,15 @@ class OrderController
         $productos = trim($productos, ',');
         $cantidades = trim($cantidades, ',');
         (new Order())->addOrder($productos, $client, $cantidades, $precioTotal);
-        echo '<p>¡Gracias por tu compra!</p>';
-        echo '<p>Estás siendo redirigido...</p>';
-        header("refresh:2.5;url=index.php");
+        echo '<script>window.location.replace("index.php")</script>';
     }
 
+    public function postFormSearchOrder()
+    {
+        $o = new Order();
+        $OrderList = $o->searchOrder(intval($_POST['busqueda']) );
+        require_once('views/admin/tableOrders.php');
+    }
     public function preSaveOrder(){
         require_once "views/client/orderClient.php";
     }

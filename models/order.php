@@ -22,6 +22,20 @@ class Order
         }
     }
 
+    public function searchOrder($id)
+    {
+        try {
+            $query = "SELECT * FROM linea_pedido WHERE email_cliente=$id";
+            $resultado = $this->pdo->query($query);
+            while ($filas = $resultado->FETCHALL(PDO::FETCH_ASSOC)) {
+                $this->elementos[] = $filas;
+            }
+            return $this->elementos;
+        } catch (Exception $e) {
+            die($e->getMessage());
+        }
+    }
+
     public function addOrder($id_productos, $email_cliente, $ListaUnidades, $precio_total)
     {
         try {

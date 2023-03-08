@@ -10,7 +10,6 @@ class ProductController
     }
     public function addTableProduct()
     {
-        require_once "models/product.php";
         $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/addProduct.php";
     }
@@ -19,18 +18,17 @@ class ProductController
         $aux = new Product();
         $aux->setId($_GET['id']);
         $aux->deleteProduct();
-        header('Location: index.php?controller=Admin&action=menuAdmin');
+        echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
     }
     public function editTableProduct()
     {
         if (!isset($_GET['id'])) {
             echo "<script>alert('No se ha pasado la ID correctamente');</script>";
-            header('Location: index.php?controller=Admin&action=menuAdmin');
+            echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
         }
         $aux = new Product();
         $aux->setId($_GET['id']);
         $product = $aux->getProductById();
-        require_once 'models/category.php';
         $categoryList = (new Category())->getCategoryList();
         require_once "views/admin/editProduct.php";
     }
@@ -50,7 +48,7 @@ class ProductController
         $product->setStock($_POST['stock']);
         $product->setIdCategoria(intval($_POST['categorias']));
         $product->addProduct();
-        header('Location: index.php?controller=Admin&action=menuAdmin');
+        echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
     }
     public function postFormEditProduct()
     {
@@ -74,7 +72,7 @@ class ProductController
         } else {
             $product->editProductNoFoto();
         }
-        header('Location: index.php?controller=Admin&action=menuAdmin');
+        echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
     }
     public function isCondition(): bool
     {
@@ -90,7 +88,7 @@ class ProductController
         } else {
             $aux->editConditionProduct($_GET['id'], 0);
         }
-        header('Location: index.php?controller=Admin&action=menuAdmin');
+        echo '<script>window.location.replace("index.php?c=Admin&a=menuAdmin")</script>';
     }
     public function postFormSearchProduct()
     {

@@ -112,13 +112,4 @@ class Cart
             die($e->getMessage());
         }
     }
-
 }
-
-
-
-
-
-
-
-?>

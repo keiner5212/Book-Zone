@@ -83,7 +83,7 @@ function anadirCarrito(id) {
 
   if (buyButton) {
     buyButton.addEventListener("click", () => {
-      window.location.href = `index.php?controller=order&action=preSaveOrder`;
+      window.location.href = `index.php?c=order&a=preSaveOrder`;
     })
   }
 
@@ -102,18 +102,17 @@ function anadirCarrito(id) {
   if (sendButton) {
     sendButton.addEventListener("click", () => {
       if (userInput.value > 0) {
-        window.location.href = `index.php?product=${id}&number=${userInput.value}&controller=Cart&action=addToCart`;
+        window.location.href = `index.php?product=${id}&number=${userInput.value}&c=Cart&a=addToCart`;
       } else {
         window.scroll(0, 0);
         modal.classList.toggle("modalNoProductDisplay");
       }
-
     })
   }
 
   if (deleteButton) {
     deleteButton.addEventListener("click", () => {
-      window.location.href = `index.php?product=${id}&controller=Cart&action=deleteAnCart`;
+      window.location.href = `index.php?product=${id}&c=Cart&a=deleteAnCart`;
     })
   }
 
@@ -147,7 +146,6 @@ function catScroll(id){
   console.log(id);
   
   switch(id){
-
     case 0:
       window.scroll(0, 0);
     break;
@@ -175,11 +173,5 @@ function catScroll(id){
         behavior: 'smooth'
       });
     break;
-
-
   }
-  
-  
-  
-  
 }

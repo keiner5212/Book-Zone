@@ -563,9 +563,9 @@ body {
 }
 
 .fotoProduct {
-  max-width: 100px;
+  max-width: 70px;
   max-height: 100px;
-  min-width: 100px;
+  min-width: 70px;
   min-height: auto;
   margin: 0;
   padding: 0;
@@ -618,39 +618,39 @@ body {
 }
 
 .details {
-  padding: 24px;
+  padding: 15px;
 }
 
 .detailsAuthor {
   color: #5f61c7;
-  font-size: 1.2em;
-  margin-bottom: 12px;
+  font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
 .detailsTitle {
   color: #1A202C;
-  font-size: 1.6em;
+  font-size: 1.3em;
   letter-spacing: 1px;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
 }
 
 .detailsDescription {
   font-size: 1em;
-  line-height: 25px;
+  line-height: 20px;
   margin-bottom: 20px;
 }
 
 .detailsPrices {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   align-items: center;
 }
 
 .detailsNewPrice {
   font-size: 1.5em;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .detailsDiscount {
@@ -678,16 +678,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   border-radius: 10px;
 }
 
 .detailsInputNumber {
-  height: 100%;
-  font-size: 0.9em;
+  height: 90%;
+  font-size: 1em;
   border: none;
   text-align: center;
-  font-weight: 700;
   background-color: #dadafc;
   outline: none;
 }
@@ -700,11 +698,11 @@ body {
 .detailsButton {
   background-color: #5f61c7;
   width: 100%;
-  height: 60px;
+  height: 40px;
   color: #fff;
-  margin-top: 20px;
+  margin-top: 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .detailsButtonDisabled {
@@ -830,29 +828,28 @@ body {
 @media (min-width:800px) {
   .container {
     margin: 5vh auto;
-    width: 90%;
+    width: 97%;
     display: grid;
-    gap: 5vh;
-    grid-template-columns: 0.5fr 0.5fr 0.5fr 0.5fr;
+    gap: 4vh;
+    grid-template-columns: 0.01fr 0.01fr 0.01fr 0.01fr;
   }
 
   .mainMenu {
-    padding-top: 30px;
+    padding-top: 20px;
     display: block;
-    margin-bottom: 5vh;
     background-color: #efeff8;
-    border-radius: 20px;
+    border-radius: 10px;
     box-shadow: 0 5px 10px -5px rgba(0, 0, 0, 0.6);
   }
 
   .galleryImageContainer {
     margin: auto;
-    height: 35vh;
+    height:35vh;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 60%;
-    border: 20px solid #d1d1fa;
-    border-radius: 10px;
+    width: 55%;
+    border: 10px solid #d1d1fa;
+    border-radius: 5px;
   }
 
   .galleryImageContainer:hover {

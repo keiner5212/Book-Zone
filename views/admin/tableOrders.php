@@ -1,12 +1,6 @@
-<a href="index.php?controller=Admin&action=closeAdmin">Cerrar Sesion</a>
 <section class="tabla">
-    <form class="d-flex"
-          action="index.php?controller=Admin&action=postSearchOrder"
-          method="POST">
-        <input class="buscar-form"
-               type="search"
-               placeholder="Busca el nombre"
-               name="busqueda">
+    <form class="d-flex" action="index.php?c=Admin&a=postSearchOrder&t=Pedidos" method="POST">
+        <input class="buscar-form" type="search" placeholder="Busca el email del cliente" name="busqueda">
     </form>
     <table class="content-table">
         <thead>
@@ -20,37 +14,37 @@
         </thead>
         <tbody>
             <?php
-            if (!empty($OrderList)):
-                foreach ($OrderList as $value)foreach ($value as $v): ?>
-                        <tr>
-                            <td>
-                                <?php
-                                echo ($v["id_pedido"])
-                                    ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo ($v["email_cliente"])
-                                    ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo ($v["id_productos"])
-                                    ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo ($v["ListaUnidades"])
-                                    ?>
-                            </td>
-                            <td>
-                                <?php
-                                echo ($v["precio_total"])
-                                    ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-            <?php else: ?>
+            if (!empty($OrderList)) :
+                foreach ($OrderList as $value) foreach ($value as $v) : ?>
+                    <tr>
+                        <td>
+                            <?php
+                            echo ($v["id_pedido"])
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo ($v["email_cliente"])
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo ($v["id_productos"])
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo ($v["ListaUnidades"])
+                            ?>
+                        </td>
+                        <td>
+                            <?php
+                            echo ($v["precio_total"])
+                            ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else : ?>
                 <td>No hay pedidos</td>
             <?php endif ?>
         </tbody>
