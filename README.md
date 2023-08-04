@@ -1,18 +1,30 @@
 # Book Zone
 
-Proyecto M07 y M09 del ciclo superior DAW.
+The app is built using PHP and MySQL with the MVC pattern, and includes a simple login process and email functionality to facilitate communication between users.
 
+## Description
 
-# Usuarios:
+This project is an online bookstore that allows users to log in, view books and add them to their cart, edit their profile, and more. Additionally, there is an admin interface that allows managing the books.
 
-- Cliente: 
-    Usuario: salvador.dali@bookzone.com
-    Contraseña: 1234
-- Administrador: 
-    Usuario: admin
-    Contraseña: 1
+## Installation
 
+1. Clone the repository
+2. Run `ng serve` to run the server locally
+3. Open your browser to `http://localhost:4200/`
 
-# Autores
+## Users
 
-Guillem Font y Albert Onetti.
+- Client: 
+    Username: salvador.dali@bookzone.com
+    Password: 1234
+- Administrator: 
+    Username: admin
+    Password: 1
+
+## Usage
+
+You can navigate the website and view the different available books.
+
+## Contributing
+
+Contributions are welcome. For major changes, please open an issue first to discuss what you would like to change.
