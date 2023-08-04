@@ -9,8 +9,8 @@ This project is an online bookstore that allows users to log in, view books and 
 ## Installation
 
 1. Clone the repository
-2. Run `ng serve` to run the server locally
-3. Open your browser to `http://localhost:4200/`
+2. Set up a MySQL database and update the database.php file with your database credentials.
+3. Run the app by navigating to `index.php` in your web browser.
 
 ## Users
 
